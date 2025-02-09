@@ -4,6 +4,7 @@ var router = express.Router();
 /* GET users listing. */
 router.post('/', function(req, res, next) {
   var id=1;
+  
   res.status(201);
   res.json({id:id,message:'User created successfully'});
 });
