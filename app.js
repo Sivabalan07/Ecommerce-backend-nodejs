@@ -25,8 +25,9 @@ app.use('/users', usersRouter);
 app.use('/products',productRouter);
 app.use('/orders',orderRouter);
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
+app.use(async (req, res, next)=> {
+  res.status(404);
+  res.json({message:"URL not found"});
 });
 
 // error handler
