@@ -6,21 +6,14 @@ router.post('/', async (req, res, next) =>{
   var id=1;
   
   res.status(201);
-  res.json({id:id,message:'User created successfully'});
+  res.json({id:id,message:'Order created successfully'});
 });
 
-router.post('/:id/address',async (req, res, next)=>{
-  var userId = req.params.id;
-  var address=req.body;
-  res.status(200);
-  res.json({message:'Address added successfully.'});
-})
-
-router.delete('/:id/address',async (req, res, next)=>{
+router.delete('/:id',async (req, res, next)=>{
     var userId = req.params.id;
     var addressId=req.query.addressId.split(',');
     res.status(200);
-    res.json({message:'Address deleted successfully.'});
+    res.json({message:'Order cancelled successfully.'});
   })
 
 module.exports = router;
