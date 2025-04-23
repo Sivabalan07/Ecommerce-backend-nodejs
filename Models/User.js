@@ -8,11 +8,10 @@ class User
     this.data={}
     }
 
-    IsAuthenticated(){
-        return this.isAuthenticated;
-    }
     IsAuthenticated(username){
         if(this.data.username==username)
+            return this.isAuthenticated;
+        if(!username)
             return this.isAuthenticated;
         return false;
     }
@@ -26,9 +25,9 @@ class User
         const token = req.header('Authorization')?.split(' ')[1]  ;
         jwt.verify(token,process.env.JWT_Secret,(err,data)=>{
             if(!err){
-                this.data=data;
                 this.isAuthenticated=true;
             }
+            this.data=data?data:{};
             req.user=this;
             next();
         });

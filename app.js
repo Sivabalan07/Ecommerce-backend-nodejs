@@ -7,9 +7,9 @@ require('dotenv').config();
 var AuthenticateMiddleware=require('./Middlewares/AuthenticateMiddleware')
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var productRouter=require('./routes/products');
-var orderRouter=require('./routes/orders');
+var usersRouter = require('./routes/user');
+var productRouter=require('./routes/product');
+var orderRouter=require('./routes/order');
 var app = express();
 
 // view engine setup
@@ -24,9 +24,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/products',productRouter);
-app.use('/orders',orderRouter);
+app.use('/user', usersRouter);
+app.use('/product',productRouter);
+app.use('/order',orderRouter);
 // catch 404 and forward to error handler
 app.use(async (req, res, next)=> {
   res.status(404);
